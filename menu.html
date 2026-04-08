@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Pizza Di Scala</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --rouge: #C0392B;
+        --rouge-fonce: #922B21;
+        --creme: #FAF3E0;
+        --creme-fonce: #F0E6C8;
+        --brun: #3D2B1F;
+        --or: #D4A017;
+        --vert: #2C6E49;
+        --blanc: #FFFFFF;
+        --gris: #7A7A7A;
+        --shadow: 0 18px 45px rgba(61,43,31,0.12);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(180deg, var(--creme) 0%, #F6EDD9 100%);
+        color: var(--brun);
+        font-family: 'Jost', sans-serif;
+        font-weight: 300;
+        line-height: 1.6;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .menu-paper {
+        position: relative;
+        width: min(1180px, 100%);
+        background: linear-gradient(180deg, rgba(255,255,255,0.96), #FAF3E0);
+        border: 1px solid rgba(61,43,31,0.08);
+        border-radius: 2rem;
+        box-shadow: var(--shadow);
+        padding: 3rem;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .subtitle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.78rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--rouge);
+        font-weight: 600;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(192,57,43,0.18);
+      }
+
+      h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.7rem, 4vw, 4rem);
+        margin: 0;
+        color: var(--brun);
+        letter-spacing: 0.06em;
+        line-height: 1;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr;
+        gap: 2.5rem;
+        align-items: start;
+      }
+
+      .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.8rem, 2.3vw, 2.3rem);
+        color: var(--brun);
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: '';
+        width: 6rem;
+        height: 3px;
+        background: var(--rouge);
+        display: block;
+        margin-top: 1rem;
+        border-radius: 999px;
+      }
+
+      main {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .pizza-item {
+        background: var(--blanc);
+        border: 1px solid rgba(61,43,31,0.08);
+        border-radius: 1.5rem;
+        padding: 1.5rem 1.6rem;
+        box-shadow: 0 14px 30px rgba(61,43,31,0.06);
+      }
+
+      .pizza-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: baseline;
+        margin-bottom: 0.85rem;
+      }
+
+      .pizza-name {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: var(--brun);
+        text-transform: uppercase;
+      }
+
+      .pizza-price {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--rouge-fonce);
+        white-space: nowrap;
+      }
+
+      .pizza-ingredients {
+        font-size: 0.95rem;
+        color: var(--gris);
+        line-height: 1.75;
+        margin: 0;
+      }
+
+      .sidebar-section {
+        background: var(--blanc);
+        border: 1px solid rgba(61,43,31,0.08);
+        border-radius: 1.5rem;
+        padding: 1.6rem;
+        box-shadow: 0 14px 30px rgba(61,43,31,0.06);
+        margin-bottom: 1.5rem;
+      }
+
+      .sidebar-section h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--rouge);
+      }
+
+      .side-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.75rem;
+        font-size: 0.95rem;
+        color: var(--brun);
+        margin-bottom: 0.85rem;
+      }
+
+      footer {
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #6f6f6f;
+        padding-top: 1.75rem;
+        border-top: 1px solid rgba(61,43,31,0.08);
+      }
+
+      @media (max-width: 900px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+</head>
+<body>
+
+    <div class="menu-paper">
+        <header>
+            <div class="subtitle">Artisan Pizzeria</div>
+            <h1>Pizza Di Scala</h1>
+        </header>
+
+        <div class="grid">
+            <main>
+                <div class="section-title">Nos Pizzas</div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Marguerita</span>
+                        <span class="pizza-price">9,50 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, olives, mozzarella, huile basilic</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Napoletana</span>
+                        <span class="pizza-price">11 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, anchois, câpres, olives, mozzarella, huile basilic</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Reina</span>
+                        <span class="pizza-price">12 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, jambon blanc, champignons, mozzarella</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Chorizo</span>
+                        <span class="pizza-price">12 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, chorizos, oignons rouges, olives, mozzarella</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">3 Fromaggi</span>
+                        <span class="pizza-price">12 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, gorgonzola, grana padano, mozzarella</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Carne</span>
+                        <span class="pizza-price">12 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, viande hachée de boeuf, oignons rouges, poivrons, mozzarella. <strong>(Suppl. sauce Barbecue : 0,50 €)</strong></p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Prosciutto</span>
+                        <span class="pizza-price">13 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, jambon cru, tomates cerises, roquette, grana padano, crème balsamique, mozzarella</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Contadino</span>
+                        <span class="pizza-price">11 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, lardons, oignons rouges, mozzarella</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Pollo all curry</span>
+                        <span class="pizza-price">12 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Crème, poulet curry, courgettes, mozzarella</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Primavera</span>
+                        <span class="pizza-price">13 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Crème, chèvre frais, lardons, tomates cerises, roquette, grana padano, mozzarella. <strong>(Suppl. miel : 0,50 €)</strong></p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Flam's</span>
+                        <span class="pizza-price">11 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Crème, lardons, oignons rouges, mozzarella</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Salmone</span>
+                        <span class="pizza-price">13 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Crème, oignons rouges, câpres, saumon, huile citronnée</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Popeye</span>
+                        <span class="pizza-price">12 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Blanche Mozza, épinards, olives noires, grana padano, tomates cerises, roquette, crème basilic</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Verdura</span>
+                        <span class="pizza-price">12 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, brocolis, courgettes, oignons rouges, champignons, tomates cerises, poivrons, crème basilic</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">Al mare</span>
+                        <span class="pizza-price">13 €</span>
+                    </div>
+                    <p class="pizza-ingredients">Tomate, cocktail fruits de mer, persillade, mozzarella, huile d'olive citronnée</p>
+                </div>
+
+                <div class="pizza-item">
+                    <div class="pizza-header">
+                        <span class="pizza-name">La cliente</span>
+                        <span class="pizza-price">Tarif selon ingrédients</span>
+                    </div>
+                    <p class="pizza-ingredients">Pizza entièrement composée par vos soins</p>
+                </div>
+            </main>
+
+            <aside>
+                <div class="sidebar-section">
+                    <h3>Suppléments</h3>
+                    <div class="side-item"><span>Supplément oeuf</span> <span>0,50 €</span></div>
+                    <div class="side-item"><span>Supplément burrata</span> <span>4 €</span></div>
+                    <div class="side-item"><span>Supplément ingrédient</span> <span>de 0,50 € à 1,50 €</span></div>
+                    <div class="side-item" style="margin-top: 1rem; color: var(--rouge-fonce); font-weight: 500;">
+                        <span>Pots à emporter pour pré-cuisson</span> <span>0,50 €</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Boissons</h3>
+                    <div class="side-item"><span>Soft 33 cl</span> <span>2,50 €</span></div>
+                    <div class="side-item"><span>Lambrusco 75 cl</span> <span>10 €</span></div>
+                    <div class="side-item"><span>Bière du moment 33 cl</span> <span>4,50 €</span></div>
+                </div>
+            </aside>
+        </div>
+
+        <footer>
+            <p><strong>LISTE ALLERGÈNES PIZZAS :</strong> gluten, crustacés, poissons, mollusques, œufs, lait, sulfites, céleri, moutarde, fruits à coque, sésame selon pizzas ou desserts.</p>
+            <p style="margin-top: 1rem; font-style: italic;">* La vente d'alcool aux mineurs est strictement interdite. L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
