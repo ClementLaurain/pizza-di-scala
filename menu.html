@@ -6,238 +6,65 @@
     <title>Menu - Pizza Di Scala</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-      *, *::before, *::after {
-        box-sizing: border-box;
-      }
-
+      *, *::before, *::after { box-sizing: border-box; }
       :root {
-        --rouge: #C0392B;
-        --rouge-fonce: #922B21;
-        --creme: #FAF3E0;
-        --creme-fonce: #F0E6C8;
-        --brun: #3D2B1F;
-        --or: #D4A017;
-        --vert: #2C6E49;
-        --blanc: #FFFFFF;
-        --gris: #7A7A7A;
+        --rouge: #C0392B; --rouge-fonce: #922B21; --creme: #FAF3E0;
+        --creme-fonce: #F0E6C8; --brun: #3D2B1F; --or: #D4A017;
+        --vert: #2C6E49; --blanc: #FFFFFF; --gris: #7A7A7A;
         --shadow: 0 18px 45px rgba(61,43,31,0.12);
       }
-
-      html {
-        scroll-behavior: smooth;
-        overflow-x: hidden; /* Empêche le scroll horizontal parasite */
-      }
-
+      html { scroll-behavior: smooth; overflow-x: hidden; }
       body {
-        margin: 0;
-        min-height: 100vh;
-        background: linear-gradient(180deg, var(--creme) 0%, #F6EDD9 100%);
-        color: var(--brun);
-        font-family: 'Jost', sans-serif;
-        font-weight: 300;
-        line-height: 1.6;
-        padding: 20px; /* Réduit pour plus d'espace sur mobile */
-        display: flex;
-        justify-content: center;
+        margin: 0; min-height: 100vh; background: linear-gradient(180deg, var(--creme) 0%, #F6EDD9 100%);
+        color: var(--brun); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.6;
+        padding: 20px; display: flex; justify-content: center;
       }
-
       a { color: inherit; text-decoration: none; }
-
-      /* NAVIGATION OPTIMISÉE */
       nav {
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.75rem 2rem;
-        background: rgba(250,243,224,0.98);
-        backdrop-filter: blur(15px);
-        border-bottom: 1px solid rgba(61,43,31,0.1);
+        position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0.75rem 2rem; background: rgba(250,243,224,0.98);
+        backdrop-filter: blur(15px); border-bottom: 1px solid rgba(61,43,31,0.1);
       }
-
       .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
       .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--rouge); }
       .logo-icon { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
-
       .nav-right { display: flex; align-items: center; gap: 1rem; }
+      .nav-links { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+      .nav-links a { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+      .hamburger { display: none; background: var(--creme-fonce); border: none; font-size: 1.2rem; cursor: pointer; padding: 8px 12px; border-radius: 8px; color: var(--brun); }
       
-      .nav-links {
-        display: flex;
-        gap: 1.5rem;
-        list-style: none;
-        margin: 0; padding: 0;
+      .lang-switcher { position: relative; display: inline-block; }
+      #language-select {
+        appearance: none; background-color: var(--blanc); color: var(--brun);
+        border: 1px solid rgba(61,43,31,0.15); padding: 8px 32px 8px 16px;
+        border-radius: 50px; font-family: 'Jost', sans-serif; font-size: 0.85rem;
+        font-weight: 500; cursor: pointer; transition: all 0.3s ease;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%233D2B1F' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat; background-position: calc(100% - 12px) center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       }
+      #language-select:hover { border-color: var(--rouge); transform: translateY(-1px); }
 
-      .nav-links a {
-        font-size: 0.8rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        font-weight: 500;
-      }
-
-      .hamburger {
-        display: none;
-        background: var(--creme-fonce);
-        border: none;
-        font-size: 1.2rem;
-        cursor: pointer;
-        padding: 8px 12px;
-        border-radius: 8px;
-        color: var(--brun);
-      }
-      /* DESIGN SÉLECTEUR DE LANGUE AMÉLIORÉ */
-        .lang-switcher {
-            position: relative;
-            display: inline-block;
-        }
-
-        #language-select {
-            appearance: none; /* Supprime le style par défaut du navigateur */
-            background-color: var(--blanc);
-            color: var(--brun);
-            border: 1px solid rgba(61,43,31,0.15);
-            padding: 8px 32px 8px 16px;
-            border-radius: 50px;
-            font-family: 'Jost', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%233D2B1F' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: calc(100% - 12px) center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        #language-select:hover {
-            border-color: var(--rouge);
-            box-shadow: 0 4px 10px rgba(192,57,43,0.1);
-            transform: translateY(-1px);
-        }
-
-        #language-select:focus {
-            outline: none;
-            border-color: var(--rouge);
-        }
-
-        /* Style des options pour certains navigateurs */
-        #language-select option {
-            background-color: var(--creme);
-            color: var(--brun);
-            padding: 10px;
-        }
-
-      /* MENU PAPER RESPONSIVE */
       .menu-paper {
-        position: relative;
-        width: 100%;
-        max-width: 1100px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.98), #FAF3E0);
-        border: 1px solid rgba(61,43,31,0.08);
-        border-radius: 2rem;
-        box-shadow: var(--shadow);
-        padding: clamp(1.5rem, 5vw, 3.5rem);
-        margin-top: 80px;
+        width: 100%; max-width: 1100px; background: linear-gradient(180deg, rgba(255,255,255,0.98), #FAF3E0);
+        border: 1px solid rgba(61,43,31,0.08); border-radius: 2rem; box-shadow: var(--shadow);
+        padding: clamp(1.5rem, 5vw, 3.5rem); margin-top: 80px;
       }
-
       header { text-align: center; margin-bottom: clamp(2rem, 5vw, 4rem); }
-      h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(2rem, 8vw, 3.5rem);
-        margin: 0;
-        line-height: 1.1;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: 1.8fr 1fr;
-        gap: clamp(1.5rem, 3vw, 3rem);
-      }
-
-      /* ITEMS PIZZA REVISITÉS POUR MOBILE */
+      h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 8vw, 3.5rem); margin: 0; line-height: 1.1; }
+      .grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: clamp(1.5rem, 3vw, 3rem); }
       main { display: grid; gap: 1.2rem; }
-
-      .pizza-item {
-        background: var(--blanc);
-        border: 1px solid rgba(61,43,31,0.05);
-        border-radius: 1.2rem;
-        padding: 1.2rem;
-        box-shadow: 0 8px 20px rgba(61,43,31,0.04);
-        transition: transform 0.2s;
-      }
-
-      .pizza-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 0.5rem;
-      }
-
-      .pizza-name {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        font-size: 1.1rem;
-        text-transform: uppercase;
-        flex: 1; /* Permet au nom de prendre la place sans pousser le prix hors écran */
-      }
-
-      .pizza-price {
-        color: var(--rouge-fonce);
-        font-weight: 700;
-        font-size: 1.1rem;
-        white-space: nowrap; /* Empêche le prix de se couper en deux */
-      }
-
-      .pizza-ingredients {
-        font-size: 0.9rem;
-        color: var(--gris);
-        margin: 0;
-        word-wrap: break-word;
-      }
-
-      /* SIDEBAR */
-      .sidebar-section {
-        background: var(--blanc);
-        border-radius: 1.2rem;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 8px 20px rgba(61,43,31,0.04);
-      }
-
-      /* MEDIA QUERIES AMÉLIORÉES */
-      @media (max-width: 992px) {
-        .grid { grid-template-columns: 1fr; }
-        .menu-paper { padding: 2rem; }
-      }
-
-      @media (max-width: 768px) {
-        nav { padding: 0.75rem 1rem; }
-        .hamburger { display: block; }
-        
-        .nav-links {
-          display: none;
-          position: absolute;
-          top: 100%; left: 0; right: 0;
-          flex-direction: column;
-          background: var(--creme);
-          padding: 1.5rem;
-          border-bottom: 1px solid rgba(61,43,31,0.1);
-          box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .nav-links.open { display: flex; }
-      }
-
-      @media (max-width: 480px) {
-        body { padding: 10px; }
-        .menu-paper { padding: 1.2rem; border-radius: 1.5rem; }
-        .pizza-item { padding: 1rem; border-radius: 1rem; }
-        .pizza-name { font-size: 1rem; }
-        .pizza-price { font-size: 1rem; }
-      }
+      .pizza-item { background: var(--blanc); border-radius: 1.2rem; padding: 1.2rem; box-shadow: 0 8px 20px rgba(61,43,31,0.04); }
+      .pizza-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 0.5rem; }
+      .pizza-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; flex: 1; }
+      .pizza-price { color: var(--rouge-fonce); font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
+      .pizza-ingredients { font-size: 0.9rem; color: var(--gris); margin: 0; }
+      .sidebar-section { background: var(--blanc); border-radius: 1.2rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(61,43,31,0.04); }
+      .side-item { display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 0.5rem;}
+      
+      @media (max-width: 992px) { .grid { grid-template-columns: 1fr; } }
+      @media (max-width: 768px) { .hamburger { display: block; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -251,12 +78,13 @@
     <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
     <ul class="nav-links">
       <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
     </ul>
     <div class="lang-switcher">
       <select id="language-select">
-        <option value="fr">FR</option>
-        <option value="en">EN</option>
-        <option value="de">DE</option>
+        <option value="fr">🇫🇷 FR</option>
+        <option value="en">🇺🇸 EN</option>
+        <option value="de">🇩🇪 DE</option>
       </select>
     </div>
   </div>
@@ -270,145 +98,81 @@
 
     <div class="grid">
         <main id="menu">
-                <div class="section-title" data-i18n="menu.section">Nos Pizzas</div>
-                
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Marguerita</span>
-                        <span class="pizza-price">9,50 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.marguerita.ingredients">Tomate, olives, mozzarella, huile basilic</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Napoletana</span>
-                        <span class="pizza-price">11 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.napoletana.ingredients">Tomate, anchois, câpres, olives, mozzarella, huile basilic</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Reina</span>
-                        <span class="pizza-price">12 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.reina.ingredients">Tomate, jambon blanc, champignons, mozzarella</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Chorizo</span>
-                        <span class="pizza-price">12 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.chorizo.ingredients">Tomate, chorizos, oignons rouges, olives, mozzarella</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">3 Fromaggi</span>
-                        <span class="pizza-price">12 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.3fromaggi.ingredients">Tomate, gorgonzola, grana padano, mozzarella</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Carne</span>
-                        <span class="pizza-price">12 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.carne.ingredients">Tomate, viande hachée de boeuf, oignons rouges, poivrons, mozzarella (Suppl. sauce Barbecue : 0,50 €)</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Prosciutto</span>
-                        <span class="pizza-price">13 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.prosciutto.ingredients">Tomate, jambon cru, tomates cerises, roquette, grana padano, crème balsamique, mozzarella</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Contadino</span>
-                        <span class="pizza-price">11 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.contadino.ingredients">Tomate, lardons, oignons rouges, mozzarella</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Pollo all curry</span>
-                        <span class="pizza-price">12 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.pollo.ingredients">Crème, poulet curry, courgettes, mozzarella</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Primavera</span>
-                        <span class="pizza-price">13 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.primavera.ingredients">Crème, chèvre frais, lardons, tomates cerises, roquette, grana padano, mozzarella (Suppl. miel : 0,50€)</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Flam's</span>
-                        <span class="pizza-price">11 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.flams.ingredients">Crème, lardons, oignons rouges, mozzarella</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Salmone</span>
-                        <span class="pizza-price">13 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.salmone.ingredients">Crème, oignons rouges, câpres, saumon, huile citronnée</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Popeye</span>
-                        <span class="pizza-price">12 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.popeye.ingredients">Blanche Mozza, épinards, olives noires, grana padano, tomates cerises, roquette, crème basilic</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Verdura</span>
-                        <span class="pizza-price">12 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.verdura.ingredients">Tomate, brocolis, courgettes, oignons rouges, champignons, tomates cerises, poivrons, crème basilic</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">Al mare</span>
-                        <span class="pizza-price">13 €</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.almare.ingredients">Tomate, cocktail fruits de mer, persillade, mozzarella, huile d'olive citronnée</p>
-                </div>
-
-                <div class="pizza-item">
-                    <div class="pizza-header">
-                        <span class="pizza-name">La cliente</span>
-                        <span class="pizza-price" style="font-size: 0.8rem;">Selon ingrédients</span>
-                    </div>
-                    <p class="pizza-ingredients" data-i18n="menu.cliente.ingredients">Pizza entièrement composée par vos soins</p>
-                </div>
-            </main>
+            <div class="section-title" data-i18n="menu.section">Nos Pizzas</div>
+            
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Marguerita</span><span class="pizza-price">9,50 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.marguerita.ingredients">Tomate, olives, mozzarella, huile basilic</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Napoletana</span><span class="pizza-price">11 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.napoletana.ingredients">Tomate, anchois, câpres, olives, mozzarella, huile basilic</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Reina</span><span class=\"pizza-price\">12 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.reina.ingredients">Tomate, jambon blanc, champignons, mozzarella</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Chorizo</span><span class="pizza-price">12 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.chorizo.ingredients">Tomate, chorizos, oignons rouges, olives, mozzarella</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">3 Fromaggi</span><span class="pizza-price">12 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.3fromaggi.ingredients">Tomate, gorgonzola, grana padano, mozzarella</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Carne</span><span class="pizza-price">12 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.carne.ingredients">Tomate, viande hachée de boeuf, oignons rouges, poivrons, mozzarella (Suppl. sauce Barbecue : 0,50 €)</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Prosciutto</span><span class="pizza-price">13 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.prosciutto.ingredients">Tomate, jambon cru, tomates cerises, roquette, grana padano, crème balsamique, mozzarella</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Contadino</span><span class="pizza-price">11 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.contadino.ingredients">Tomate, lardons, oignons rouges, mozzarella</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Pollo all curry</span><span class="pizza-price">12 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.pollo.ingredients">Crème, poulet curry, courgettes, mozzarella</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Primavera</span><span class="pizza-price">13 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.primavera.ingredients">Crème, chèvre frais, lardons, tomates cerises, roquette, grana padano, mozzarella (Suppl. miel : 0,50€)</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Flam's</span><span class="pizza-price">11 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.flams.ingredients">Crème, lardons, oignons rouges, mozzarella</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Salmone</span><span class="pizza-price">13 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.salmone.ingredients">Crème, oignons rouges, câpres, saumon, huile citronnée</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Popeye</span><span class="pizza-price">12 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.popeye.ingredients">Blanche Mozza, épinards, olives noires, grana padano, tomates cerises, roquette, crème basilic</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Verdura</span><span class="pizza-price">12 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.verdura.ingredients">Tomate, brocolis, courgettes, oignons rouges, champignons, tomates cerises, poivrons, crème basilic</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">Al mare</span><span class="pizza-price">13 €</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.almare.ingredients">Tomate, cocktail fruits de mer, persillade, mozzarella, huile d'olive citronnée</p>
+            </div>
+            <div class="pizza-item">
+                <div class="pizza-header"><span class="pizza-name">La cliente</span><span class="pizza-price" style="font-size: 0.8rem;">Tarif variable</span></div>
+                <p class="pizza-ingredients" data-i18n="menu.cliente.ingredients">Pizza entièrement composée par vos soins</p>
+            </div>
+        </main>
 
         <aside>
             <div class="sidebar-section">
                 <h3 data-i18n="menu.supplements">Suppléments</h3>
-                <div class="side-item"><span>Oeuf</span> <span>0,50 €</span></div>
-                <div class="side-item"><span>Burrata</span> <span>4 €</span></div>
-                <div class="side-item"><span>Pots pré-cuisson</span> <span>0,50 €</span></div>
+                <div class="side-item"><span data-i18n="side.egg">Oeuf</span> <span>0,50 €</span></div>
+                <div class="side-item"><span data-i18n="side.burrata">Burrata</span> <span>4 €</span></div>
+                <div class="side-item"><span data-i18n="side.pot">Pots pré-cuisson</span> <span>0,50 €</span></div>
             </div>
-
             <div class="sidebar-section">
                 <h3 data-i18n="menu.drinks">Boissons</h3>
                 <div class="side-item"><span>Soft 33 cl</span> <span>2,50 €</span></div>
@@ -423,14 +187,85 @@
 </div>
 
 <script>
-    // Logique du bouton Hamburger
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-    });
+  const translations = {
+    fr: {
+      'nav.menu': 'Menu','nav.home': 'Home', 'menu.subtitle': 'Artisan Pizzeria', 'menu.title': 'Pizza Di Scala', 'menu.section': 'Nos Pizzas',
+      'menu.marguerita.ingredients': 'Tomate, olives, mozzarella, huile basilic',
+      'menu.napoletana.ingredients': 'Tomate, anchois, câpres, olives, mozzarella, huile basilic',
+      'menu.reina.ingredients': 'Tomate, jambon blanc, champignons, mozzarella',
+      'menu.chorizo.ingredients': 'Tomate, chorizos, oignons rouges, olives, mozzarella',
+      'menu.3fromaggi.ingredients': 'Tomate, gorgonzola, grana padano, mozzarella',
+      'menu.carne.ingredients': 'Tomate, viande hachée de boeuf, oignons rouges, poivrons, mozzarella (Suppl. sauce Barbecue : 0,50 €)',
+      'menu.prosciutto.ingredients': 'Tomate, jambon cru, tomates cerises, roquette, grana padano, crème balsamique, mozzarella',
+      'menu.contadino.ingredients': 'Tomate, lardons, oignons rouges, mozzarella',
+      'menu.pollo.ingredients': 'Crème, poulet curry, courgettes, mozzarella',
+      'menu.primavera.ingredients': 'Crème, chèvre frais, lardons, tomates cerises, roquette, grana padano, mozzarella (Suppl. miel : 0,50€)',
+      'menu.flams.ingredients': 'Crème, lardons, oignons rouges, mozzarella',
+      'menu.salmone.ingredients': 'Crème, oignons rouges, câpres, saumon, huile citronnée',
+      'menu.popeye.ingredients': 'Blanche Mozza, épinards, olives noires, grana padano, tomates cerises, roquette, crème basilic',
+      'menu.verdura.ingredients': 'Tomate, brocolis, courgettes, oignons rouges, champignons, tomates cerises, poivrons, crème basilic',
+      'menu.almare.ingredients': 'Tomate, cocktail fruits de mer, persillade, mozzarella, huile d\'olive citronnée',
+      'menu.cliente.ingredients': 'Pizza entièrement composée par vos soins',
+      'menu.supplements': 'Suppléments', 'side.egg': 'Oeuf', 'side.burrata': 'Burrata', 'side.pot': 'Pots pré-cuisson',
+      'menu.drinks': 'Boissons', 'menu.allergens.title': 'ALLERGÈNES :', 'menu.allergens.list': 'gluten, crustacés, œufs, lait...'
+    },
+    en: {
+      'nav.menu': 'Menu','nav.home': 'Home', 'menu.subtitle': 'Artisan Pizzeria', 'menu.title': 'Pizza Di Scala', 'menu.section': 'Our Pizzas',
+      'menu.marguerita.ingredients': 'Tomato, olives, mozzarella, basil oil',
+      'menu.napoletana.ingredients': 'Tomato, anchovies, capers, olives, mozzarella, basil oil',
+      'menu.reina.ingredients': 'Tomato, white ham, mushrooms, mozzarella',
+      'menu.chorizo.ingredients': 'Tomato, chorizo, red onions, olives, mozzarella',
+      'menu.3fromaggi.ingredients': 'Tomato, gorgonzola, grana padano, mozzarella',
+      'menu.carne.ingredients': 'Tomato, minced beef, red onions, peppers, mozzarella (Extra BBQ sauce: €0.50)',
+      'menu.prosciutto.ingredients': 'Tomato, cured ham, cherry tomatoes, arugula, grana padano, balsamic cream, mozzarella',
+      'menu.contadino.ingredients': 'Tomato, bacon bits, red onions, mozzarella',
+      'menu.pollo.ingredients': 'Cream, curry chicken, zucchini, mozzarella',
+      'menu.primavera.ingredients': 'Cream, fresh goat cheese, bacon bits, cherry tomatoes, arugula, grana padano, mozzarella (Extra honey: €0.50)',
+      'menu.flams.ingredients': 'Cream, bacon bits, red onions, mozzarella',
+      'menu.salmone.ingredients': 'Cream, red onions, capers, salmon, lemon oil',
+      'menu.popeye.ingredients': 'White Mozza, spinach, black olives, grana padano, cherry tomatoes, arugula, basil cream',
+      'menu.verdura.ingredients': 'Tomato, broccoli, zucchini, red onions, mushrooms, cherry tomatoes, peppers, basil cream',
+      'menu.almare.ingredients': 'Tomato, seafood cocktail, parsley, mozzarella, lemon olive oil',
+      'menu.cliente.ingredients': 'Pizza entirely composed by you',
+      'menu.supplements': 'Extras', 'side.egg': 'Egg', 'side.burrata': 'Burrata', 'side.pot': 'Pre-bake pots',
+      'menu.drinks': 'Drinks', 'menu.allergens.title': 'ALLERGENS:', 'menu.allergens.list': 'gluten, crustaceans, eggs, milk...'
+    },
+    de: {
+        'nav.menu': 'Speisekarte', 'nav.home': 'Startseite', 'menu.subtitle': 'Handwerkliche Pizzeria', 'menu.title': 'Pizza Di Scala', 'menu.section': 'Unsere Pizzen',
+        'menu.marguerita.ingredients': 'Tomate, Oliven, Mozzarella, Basilikumöl',
+        'menu.napoletana.ingredients': 'Tomate, Sardellen, Kapern, Oliven, Mozzarella, Basilikumöl',
+        'menu.reina.ingredients': 'Tomate, Kochschinken, Pilze, Mozzarella',
+        'menu.chorizo.ingredients': 'Tomate, Chorizo, rote Zwiebeln, Oliven, Mozzarella',
+        'menu.3fromaggi.ingredients': 'Tomate, Gorgonzola, Grana Padano, Mozzarella',
+        'menu.carne.ingredients': 'Tomate, Rinderhackfleisch, rote Zwiebeln, Paprika, Mozzarella (Zusatz BBQ-Sauce: 0,50 €)',
+        'menu.prosciutto.ingredients': 'Tomate, Rohschinken, Kirschtomaten, Rucola, Grana Padano, Balsamico-Creme, Mozzarella',
+        'menu.contadino.ingredients': 'Tomate, Speckwürfel, rote Zwiebeln, Mozzarella',
+        'menu.pollo.ingredients': 'Sahne, Curry-Hähnchen, Zucchini, Mozzarella',
+        'menu.primavera.ingredients': 'Sahne, frischer Ziegenkäse, Speckwürfel, Kirschtomaten, Rucola, Grana Padano, Mozzarella (Zusatz Honig: 0,50 €)',
+        'menu.flams.ingredients': 'Sahne, Speckwürfel, rote Zwiebeln, Mozzarella',
+        'menu.salmone.ingredients': 'Sahne, rote Zwiebeln, Kapern, Lachs, Zitronenöl',
+        'menu.popeye.ingredients': 'Weiße Mozza, Spinat, schwarze Oliven, Grana Padano, Kirschtomaten, Rucola, Basilikumcreme',
+        'menu.verdura.ingredients': 'Tomate, Brokkoli, Zucchini, rote Zwiebeln, Pilze, Kirschtomaten, Paprika, Basilikumcreme',
+        'menu.almare.ingredients': 'Tomate, Meeresfrüchte-Cocktail, Petersilie, Mozzarella, Zitronen-Olivenöl',
+        'menu.cliente.ingredients': 'Pizza ganz nach Ihren Wünschen zusammengestellt',
+        'menu.supplements': 'Extras', 'side.egg': 'Ei', 'side.burrata': 'Burrata', 'side.pot': 'Töpfe zum Vorbacken',
+        'menu.drinks': 'Getränke', 'menu.allergens.title': 'ALLERGENE:', 'menu.allergens.list': 'Gluten, Krebstiere, Eier, Milch...'
+    }
+  };
 
-    // (Garder ta logique de traduction ici)
+  function applyLanguage(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) el.textContent = translations[lang][key];
+    });
+  }
+
+  const select = document.getElementById('language-select');
+  select.addEventListener('change', (e) => applyLanguage(e.target.value));
+  
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
 </script>
 
 </body>
