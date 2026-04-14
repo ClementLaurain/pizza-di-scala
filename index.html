@@ -136,21 +136,19 @@
   .footer-links a { color: rgba(250,243,224,0.4); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
   .footer-links a:hover { color: var(--or); }
   .footer-credit a {
-    position: relative;
-    display: inline-block;
-   } 
+    text-decoration: none;      /* Enlève le souligné classique par défaut */
+    color: var(--accent);       /* Utilise ta couleur bleue (ou mets #38bdf8) */
+    font-weight: bold;          /* Met ton nom un peu plus en valeur */
+    border-bottom: 2px solid var(--accent); /* La fameuse ligne sous le nom */
+    padding-bottom: 2px;        /* Un petit espace pour que ce soit aéré */
+    transition: all 0.3s ease;  /* Pour que ce soit fluide si tu changes de couleur */
+ }
 
-  .footer-credit a::after {
-      content: "";
-      position: absolute;
-      bottom: -4px; /* Position sous le texte */
-      left: 0;
-      width: 100%; /* La ligne fait toute la largeur du nom */
-      height: 2px;
-      background-color: var(--accent);
-      border-radius: 2px; /* Pour des bords arrondis sur la ligne */
+  /* Optionnel : change la couleur quand on passe la souris dessus */
+  .footer-credit a:hover {
+      color: white;
+      border-bottom-color: white;
   }
-
   /* RESPONSIVE */
   @media (max-width: 1024px) {
     nav { padding: 0.75rem 2rem; }
