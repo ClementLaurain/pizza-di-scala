@@ -135,7 +135,21 @@
   .footer-links { display: flex; gap: 1.25rem; }
   .footer-links a { color: rgba(250,243,224,0.4); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
   .footer-links a:hover { color: var(--or); }
-  .footer-credit a {padding-bottom: 2px; display: inline-block;}
+  .footer-credit a {
+    position: relative;
+    display: inline-block;
+   } 
+
+  .footer-credit a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px; /* Position sous le texte */
+      left: 0;
+      width: 100%; /* La ligne fait toute la largeur du nom */
+      height: 2px;
+      background-color: var(--accent);
+      border-radius: 2px; /* Pour des bords arrondis sur la ligne */
+  }
 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
