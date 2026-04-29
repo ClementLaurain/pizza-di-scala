@@ -19,19 +19,19 @@
   a { color: inherit; text-decoration: none; }
   a:visited { color: inherit; }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 3rem; background: rgba(250,243,224,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(61,43,31,0.1); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 3rem; background: var(--brun); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(61,43,31,0.1); }
   .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
-  .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--rouge); letter-spacing: 0.04em; }
+  .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--or); letter-spacing: 0.04em; }
   .nav-logo-text span { font-style: italic; }
   .logo-icon { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
   .nav-right { display: flex; align-items: center; gap: 1rem; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--brun); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a { text-decoration: none; color: var(--blanc); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--rouge); }
-  .lang-switcher { position: relative; }
-  .lang-switcher select { appearance: none; border: 1px solid rgba(61,43,31,0.18); background: rgba(250,243,224,0.92); color: var(--brun); padding: 0.45rem 0.8rem; border-radius: 999px; font-size: 0.82rem; cursor: pointer; }
+  .lang-switcher { position: relative;}
+  .lang-switcher select { appearance: none; border: 1px solid var(--blanc);  background: var(--brun);; color: var(--blanc); padding: 0.45rem 0.8rem; border-radius: 999px; font-size: 0.82rem; cursor: pointer; }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-  .hamburger { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--brun); padding: 0.5rem; }
+  .hamburger { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--blanc); padding: 0.5rem; }
   .nav-links.open { display: flex !important; }
 
   /* HERO — hauteur fixe, pas 100vh */
@@ -42,6 +42,7 @@
   .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.02; color: var(--brun); }
   .hero-title em { font-style: italic; color: var(--rouge); }
   .hero-subtitle { font-size: 1rem; color: var(--gris); line-height: 1.8; max-width: 460px; }
+  .hero-subtitle strong {color: #787878; font-weight: 500;}
   .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
   .hero-right { position: relative; border-radius: 2rem; overflow: hidden; min-height: 540px; }
   .hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
@@ -165,9 +166,9 @@
     nav { padding: 0.75rem 1.5rem; flex-wrap: wrap; gap: 1rem; align-items: flex-start; }
     .nav-logo { order: 1; flex: none; width: 100%; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo-text { font-size: 1rem; }
-    .hamburger { display: block; order: 2; border-radius: 0.75rem; background: rgba(61,43,31,0.08); }
+    .hamburger { display: block; order: 2; border-radius: 0.75rem; background: rgba(61,43,31,0.08); color: var(--blanc);}
     .nav-right { order: 2; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
-    .nav-links { order: 3; width: 100%; gap: 0.75rem; justify-content: flex-start; margin-top: 0.75rem; display: none; flex-direction: column; background: rgba(250,243,224,0.96); padding: 1rem 1.25rem; border-radius: 1rem; box-shadow: 0 18px 40px rgba(61,43,31,0.12); }
+    .nav-links { order: 3; width: 100%; gap: 0.75rem; justify-content: flex-start; margin-top: 0.75rem; display: none; flex-direction: column; background: var(--brun); padding: 1rem 1.25rem; border-radius: 1rem; box-shadow: 0 18px 40px var(--gris); }
     .nav-links.open { display: flex !important; }
     .nav-links li { width: 100%; }
     .nav-links a { display: block; width: 100%; padding: 0.85rem 0; border-bottom: 1px solid rgba(61,43,31,0.12); }
@@ -261,10 +262,13 @@
   <div class="hero-left">
     <div class="hero-eyebrow" data-i18n="hero.eyebrow">Pizza artisanale · Alsace</div>
     <h1 class="hero-title"><span data-i18n="hero.title1">La vraie pizza</span><br><span data-i18n="hero.title2">comme en <em>Italie</em></span></h1>
-    <p class="hero-subtitle" data-i18n="hero.subtitle">Nicolas Scala sillonne les villages alsaciens chaque soir avec son camion et ses recettes maison. Pizzas cuites au feu de bois, ingrédients locaux et service convivial.</p>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">
+      Nicolas Scala sillonne les villages alsaciens chaque soir avec son camion et ses recettes maison. 
+      <strong>Pizzas cuites au feu de bois</strong>, ingrédients locaux et service convivial.
+    </p>
     <div class="hero-btns">
       <a href="tel:+33622925534" class="btn-primary" data-i18n="hero.call">📞 Appeler</a>
-      <a href="https://cdn.website.dish.co/media/2b/45/9432283/Menu.jpg" class="btn-secondary" data-i18n="hero.menu">Le menu</a>
+      <a href="Menu.html" class="btn-secondary" data-i18n="hero.menu">Le menu</a>
     </div>
     <div class="hero-badges">
       <span class="hero-badge" data-i18n="hero.badge1">Camion mobile</span>
@@ -273,7 +277,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="PIZZA-DI-SCALA-jpg.jpg" alt="Camion Pizza Di Scala"/>
+    <img src="accueil_image.jpg" alt="Camion Pizza Di Scala"/>
     <div class="hero-right-overlay"></div>
   </div>
 </div>
@@ -282,7 +286,6 @@
   <div class="section-eyebrow" data-i18n="gallery.eyebrow">Galerie</div>
   <h2 class="section-title" data-i18n="gallery.title">Un aperçu de nos pizzas</h2>
   <div class="photo-grid">
-    <div class="gallery-strip-cell"><img src="https://cdn.website.dish.co/media/60/71/3499799/PIZZA-DI-SCALA-IMG-20210328-WA0008-jpg.jpg" alt="Pizza Di Scala sur place"/></div>
     <div class="gallery-strip-cell"><img src="https://cdn.website.dish.co/media/15/6d/3499804/PIZZA-DI-SCALA-IMG-20210328-WA0007-jpg.jpg" alt="Pizzas Pizza Di Scala"/></div>
     <div class="gallery-strip-cell"><img src="https://cdn.website.dish.co/media/58/e0/3499801/PIZZA-DI-SCALA-IMG-20210328-WA0008-jpg.jpg" alt="Pizza Di Scala camion"/></div>
     <div class="gallery-strip-cell"><img src="https://cdn.website.dish.co/media/04/98/7803280/PIZZA-DI-SCALA-IMG-20230913-154738-jpg.jpg" alt="Service Pizza Di Scala"/></div>
@@ -304,7 +307,6 @@
       <div class="stat"><div class="stat-num">6</div><div class="stat-label" data-i18n="about.stat1">Villages / semaine</div></div>
       <div class="stat"><div class="stat-num">18h</div><div class="stat-label" data-i18n="about.stat2">Ouvert chaque soir</div></div>
       <div class="stat"><div class="stat-num">100%</div><div class="stat-label" data-i18n="about.stat3">Fait maison</div></div>
-      <div class="stat"><div class="stat-num">+4</div><div class="stat-label" data-i18n="about.stat4">Ans d'expérience</div></div>
     </div>
   </div>
 </div>
@@ -314,9 +316,9 @@
   <h2 class="section-title" data-i18n="services.title">Ce que nous proposons</h2>
   <div class="services-grid">
     <div class="service-card">
-      <div class="service-icon">♿</div>
-      <h3 data-i18n="services.card1.title">Accessible PMR</h3>
-      <p data-i18n="services.card1.text">Camion adapté et service attentif pour les clients à mobilité réduite.</p>
+      <div class="service-icon">🥡</div>
+      <h3 data-i18n="services.card3.title">À emporter</h3>
+      <p data-i18n="services.card3.text">Commandes rapides et pizzas prêtes à emporter pour vos repas sur le pouce.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🎉</div>
@@ -324,9 +326,9 @@
       <p data-i18n="services.card2.text">Nous intervenons sur les fêtes, mariages et soirées privées partout en Alsace.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon">🥡</div>
-      <h3 data-i18n="services.card3.title">À emporter</h3>
-      <p data-i18n="services.card3.text">Commandes rapides et pizzas prêtes à emporter pour vos repas sur le pouce.</p>
+      <div class="service-icon">♿</div>
+      <h3 data-i18n="services.card1.title">Accessible PMR</h3>
+      <p data-i18n="services.card1.text">Camion adapté et service attentif pour les clients à mobilité réduite.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🐶</div>
@@ -380,11 +382,11 @@
   <h2 class="h-title" data-i18n="hours.title">Nos tournées de la semaine</h2>
   <div class="horaires-grid">
     <div class="horaire-row">
-      <div><div class="jour" data-i18n="day.monday">Lundi</div><div class="lieu" data-i18n="location.monday">Place de la Mairie, Kirchheim <em style="font-size:0.7rem;opacity:0.4;">(sem. paire)</em></div></div>
+      <div><div class="jour" data-i18n="day.monday">Lundi</div><div class="lieu" data-i18n="location.monday">Place de la Mairie, Kirchheim (sem. paire)</div></div>
       <div class="heure">18h–21h</div>
     </div>
     <div class="horaire-row">
-      <div><div class="jour" data-i18n="day.tuesday">Mardi</div><div class="lieu" data-i18n="location.tuesday">Niederhaslach / Balbronn <em style="font-size:0.7rem;opacity:0.4;">(paire/impaire)</em></div></div>
+      <div><div class="jour" data-i18n="day.tuesday">Mardi</div><div class="lieu" data-i18n="location.tuesday">Niederhaslach (paire) / Balbronn (impaire)</div></div>
       <div class="heure">18h–21h</div>
     </div>
     <div class="horaire-row">
@@ -392,11 +394,11 @@
       <div class="heure">18h–21h</div>
     </div>
     <div class="horaire-row">
-      <div><div class="jour" data-i18n="day.thursday">Jeudi</div><div class="lieu" data-i18n="location.thursday">Dangolsheim / Dorlisheim <em style="font-size:0.7rem;opacity:0.4;">(imp./paire)</em></div></div>
+      <div><div class="jour" data-i18n="day.thursday">Jeudi</div><div class="lieu" data-i18n="location.thursday">Dangolsheim (imp.)/ Dorlisheim (paire)</div></div>
       <div class="heure">18h–21h</div>
     </div>
     <div class="horaire-row">
-      <div><div class="jour" data-i18n="day.friday">Vendredi</div><div class="lieu" data-i18n="location.friday">Cosswiller / Allenwiller <em style="font-size:0.7rem;opacity:0.4;">(paire/imp.)</em></div></div>
+      <div><div class="jour" data-i18n="day.friday">Vendredi</div><div class="lieu" data-i18n="location.friday">Cosswiller (paire) / Allenwiller (impaire)</div></div>
       <div class="heure">18h–21h</div>
     </div>
     <div class="horaire-row">
@@ -466,7 +468,7 @@
       'hero.eyebrow': 'Pizza artisanale · Alsace',
       'hero.title1': 'La vraie pizza',
       'hero.title2': 'comme en Italie',
-      'hero.subtitle': 'Nicolas Scala sillonne les villages alsaciens chaque soir avec son camion et ses recettes maison. Pizzas cuites au feu de bois, ingrédients locaux et service convivial.',
+      'hero.subtitle': 'Nicolas Scala sillonne les villages alsaciens chaque soir avec son camion et ses recettes maison. <strong>Pizzas cuites au feu de bois</strong>, ingrédients locaux et service convivial.',
       'hero.call': '📞 Appeler',
       'hero.menu': 'Le menu',
       'hero.badge1': 'Camion mobile',
@@ -515,10 +517,10 @@
       'hours.closed': 'Fermé',
       'hours.map': '📍 Carte des emplacements',
       'location.monday': 'Place de la Mairie, Kirchheim (sem. paire)',
-      'location.tuesday': 'Niederhaslach / Balbronn (paire/impaire)',
+      'location.tuesday': 'Niederhaslach (paire) / Balbronn (impaire)',
       'location.wednesday': 'Rue de la Source, Scharrachbergheim',
-      'location.thursday': 'Dangolsheim / Dorlisheim (imp./paire)',
-      'location.friday': 'Cosswiller / Allenwiller (paire/imp.)',
+      'location.thursday': 'Dangolsheim (imp.)/ Dorlisheim (paire)',
+      'location.friday': 'Cosswiller (paire) / Allenwiller (impaire)',
       'location.saturday': 'Office du Tourisme, Wangenbourg-Engenthal',
       'contact.eyebrow': 'Nous rejoindre',
       'contact.title': 'Prenez contact',
@@ -537,7 +539,7 @@
       'hero.eyebrow': 'Artisanal pizza · Alsace',
       'hero.title1': 'Real pizza',
       'hero.title2': 'like in Italy',
-      'hero.subtitle': 'Nicolas Scala travels through Alsatian villages each evening with his truck and homemade recipes. Wood-fired pizzas, local ingredients and friendly service.',
+      'hero.subtitle': 'Nicolas Scala travels through Alsatian villages each evening with his truck and homemade recipes. <strong>Wood-fired pizzas</strong>, local ingredients and friendly service.',
       'hero.call': '📞 Call',
       'hero.menu': 'Menu',
       'hero.badge1': 'Mobile truck',
@@ -586,10 +588,10 @@
       'hours.closed': 'Closed',
       'hours.map': '📍 Locations map',
       'location.monday': 'Town Hall Square, Kirchheim (even week)',
-      'location.tuesday': 'Niederhaslach / Balbronn (even/odd)',
+      'location.tuesday': 'Niederhaslach (even) / Balbronn (odd)',
       'location.wednesday': 'Source Street, Scharrachbergheim',
-      'location.thursday': 'Dangolsheim / Dorlisheim (odd/even)',
-      'location.friday': 'Cosswiller / Allenwiller (even/odd)',
+      'location.thursday': 'Dangolsheim (odd) / Dorlisheim (even)',
+      'location.friday': 'Cosswiller (even) / Allenwiller (odd)',
       'location.saturday': 'Tourism Office, Wangenbourg-Engenthal',
       'contact.eyebrow': 'Get in touch',
       'contact.title': 'Contact us',
@@ -608,7 +610,7 @@
       'hero.eyebrow': 'Handgemachte Pizza · Elsass',
       'hero.title1': 'Die echte Pizza',
       'hero.title2': 'wie in Italien',
-      'hero.subtitle': 'Nicolas Scala fährt jeden Abend durch elsässische Dörfer mit seinem Truck und seinen Hausrezepten. Holzofenpizzen, regionale Zutaten und freundlicher Service.',
+      'hero.subtitle': 'Nicolas Scala fährt jeden Abend durch elsässische Dörfer mit seinem Truck und seinen Hausrezepten. <strong>Holzofenpizzen</strong>, regionale Zutaten und freundlicher Service.',
       'hero.call': '📞 Anrufen',
       'hero.menu': 'Speisekarte',
       'hero.badge1': 'Mobiler Truck',
@@ -657,10 +659,10 @@
       'hours.closed': 'Geschlossen',
       'hours.map': '📍 Standortkarte',
       'location.monday': 'Rathausplatz, Kirchheim (gerade Woche)',
-      'location.tuesday': 'Niederhaslach / Balbronn (gerade/ungerade)',
+      'location.tuesday': 'Niederhaslach (gerade) / Balbronn (ungerade)',
       'location.wednesday': 'Quellenstraße, Scharrachbergheim',
-      'location.thursday': 'Dangolsheim / Dorlisheim (ungerade/gerade)',
-      'location.friday': 'Cosswiller / Allenwiller (gerade/ungerade)',
+      'location.thursday': 'Dangolsheim (ungerade) / Dorlisheim (gerade)',
+      'location.friday': 'Cosswiller (gerade) / Allenwiller (ungerade)',
       'location.saturday': 'Tourismusbüro, Wangenbourg-Engenthal',
       'contact.eyebrow': 'Kontakt',
       'contact.title': 'Nehmen Sie Kontakt auf',
@@ -679,7 +681,7 @@
       if (!key) return;
       const text = translations[lang] && translations[lang][key];
       if (text !== undefined) {
-        element.textContent = text;
+        element.innerHTML = text;
       }
     });
   }
