@@ -115,6 +115,21 @@
   .lieu { font-size: 0.82rem; color: rgba(250,243,224,0.6); line-height: 1.5; flex: 1; }
   .heure { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--creme); white-space: nowrap; }
   .ferme { color: rgba(250,243,224,0.25); font-style: italic; font-size: 0.82rem; }
+  .btn-primary, .btn-secondary {text-decoration: none;border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    background: var(--or);
+    color: var(--brun);}
+  .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
 
   /* CONTACT */
   .contact-section { background: var(--rouge); color: var(--blanc); }
@@ -207,7 +222,7 @@
     .hero-title { font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.1; }
     .hero-subtitle { font-size: 0.85rem; line-height: 1.6; }
     .hero-btns { flex-direction: column; }
-    .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center;}
     .hero-right { min-height: 220px; }
     .photo-grid .gallery-strip-cell { min-height: 150px; }
     .about-content { padding: 1.5rem 1rem; }
