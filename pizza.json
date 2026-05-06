@@ -1,20 +1,20 @@
 {
   "fr": {
-    "nom": "La Rustique",
+    "nom": "La natal",
     "description": "Base crème, mozzarella, champignons frais, jambon de pays, éclats de noix et filet d'huile de truffe.",
     "prix": "14,50 €",
-    "image": "gallery_création_du chef/pizza_moment.jpg"
+    "image": "gallery_création_du chef/natal.jpg"
   },
   "en": {
-    "nom": "The Rustic",
+    "nom": "The natal",
     "description": "Cream base, mozzarella, fresh mushrooms, country ham, walnut pieces and truffle oil drizzle.",
     "prix": "14.50 €",
-    "image": "gallery_création_du chef/pizza_moment.jpg"
+    "image": "gallery_création_du chef/natal.jpg"
   },
   "de": {
-    "nom": "Die Rustikale",
+    "nom": "Die natal",
     "description": "Sahnebasis, Mozzarella, frische Champignons, Land-Schinken, Walnussstücke und Trüffelöl-Tropfen.",
     "prix": "14,50 €",
-    "image": "gallery_création_du chef/pizza_moment.jpg"
+    "image": "gallery_création_du chef/natal.jpg"
   }
 }
