@@ -247,13 +247,13 @@
   }
 
   // Charger les données de pizza.json
-  fetch('pizza.json')
-    .then(response => response.json())
-    .then(data => {
-      pizzaData = data;
-      updatePizza('fr'); // Langue par défaut
-    })
-    .catch(error => console.error('Erreur lors du chargement de pizza.json:', error));
+  etch('pizza.json?v=' + new Date().getTime())
+  .then(response => response.json())
+  .then(data => {
+    pizzaData = data;
+    updatePizza('fr');
+  })
+  .catch(error => console.error('Erreur:', error));
 
   const select = document.getElementById('language-select');
   select.addEventListener('change', (e) => applyLanguage(e.target.value));
