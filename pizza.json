@@ -1,0 +1,20 @@
+{
+  "fr": {
+    "nom": "La Rustique",
+    "description": "Base crème, mozzarella, champignons frais, jambon de pays, éclats de noix et filet d'huile de truffe.",
+    "prix": "14,50 €",
+    "image": "gallery_création_du chef/pizza_moment.jpg"
+  },
+  "en": {
+    "nom": "The Rustic",
+    "description": "Cream base, mozzarella, fresh mushrooms, country ham, walnut pieces and truffle oil drizzle.",
+    "prix": "14.50 €",
+    "image": "gallery_création_du chef/pizza_moment.jpg"
+  },
+  "de": {
+    "nom": "Die Rustikale",
+    "description": "Sahnebasis, Mozzarella, frische Champignons, Land-Schinken, Walnussstücke und Trüffelöl-Tropfen.",
+    "prix": "14,50 €",
+    "image": "gallery_création_du chef/pizza_moment.jpg"
+  }
+}
