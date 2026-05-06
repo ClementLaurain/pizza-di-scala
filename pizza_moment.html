@@ -133,14 +133,18 @@
         
         <header>
             <div class="subtitle" style="letter-spacing: 4px; text-transform: uppercase; color: var(--or);" data-i18n="moment.subtitle">La Pizza du Moment</div>
-            <h1 data-i18n="moment.name">La Truffée d'Automne</h1>
+            <h1 id="pizza-name">La Truffée d'Automne</h1>
         </header>
 
-        <div class="price-tag">15,00 €</div>
+        <div class="price-tag" id="pizza-price">15,00 €</div>
 
-        <p class="description" data-i18n="moment.ingredients">
+        <p class="description" id="pizza-description">
             Crème de truffe noire, mozzarella fior di latte, champignons de Paris frais, copeaux de Grana Padano, roquette et huile de truffe.
         </p>
+
+        <div style="margin: 2rem 0; text-align: center;">
+            <img id="pizza-image" src="" alt="Pizza du Moment" style="max-width: 100%; height: auto; border-radius: 1rem; box-shadow: var(--shadow);">
+        </div>
 
         <footer style="margin-top: 3rem; font-size: 0.8rem; color: var(--gris);">
             <p><strong data-i18n="menu.allergens.title">ALLERGÈNES :</strong> <span data-i18n="menu.allergens.list">gluten, œufs, lait...</span></p>
@@ -197,12 +201,12 @@
 </div>
 
 <script>
+  let pizzaData = null;
+
   const translations = {
     fr: {
       'nav.home': 'Home', 'nav.menu': 'Carte Complète',
       'moment.badge': 'Édition Limitée', 'moment.subtitle': 'La Pizza du Moment',
-      'moment.name': 'La Truffée d\'Automne',
-      'moment.ingredients': 'Crème de truffe noire, mozzarella fior di latte, champignons de Paris frais, copeaux de Grana Padano, roquette et huile de truffe.',
       'menu.allergens.title': 'ALLERGÈNES :', 'menu.allergens.list': 'gluten, œufs, lait...',
       'gallery.title': 'Nos Créations Passées',
       'gallery.season.summer': 'Été 2023', 'gallery.season.spring': 'Printemps 2023', 'gallery.season.winter': 'Hiver 2022',
@@ -211,8 +215,6 @@
     en: {
       'nav.home': 'Home', 'nav.menu': 'Full Menu',
       'moment.badge': 'Limited Edition', 'moment.subtitle': 'Special of the Moment',
-      'moment.name': 'Autumn Truffle',
-      'moment.ingredients': 'Black truffle cream, fior di latte mozzarella, fresh mushrooms, Grana Padano shavings, arugula and truffle oil.',
       'menu.allergens.title': 'ALLERGENS:', 'menu.allergens.list': 'gluten, eggs, milk...',
       'gallery.title': 'Our Past Creations',
       'gallery.season.summer': 'Summer 2023', 'gallery.season.spring': 'Spring 2023', 'gallery.season.winter': 'Winter 2022',
@@ -221,8 +223,6 @@
     de: {
       'nav.home': 'Startseite', 'nav.menu': 'Speisekarte',
       'moment.badge': 'Limitierte Auflage', 'moment.subtitle': 'Pizza des Augenblicks',
-      'moment.name': 'Herbsttrüffel',
-      'moment.ingredients': 'Schwarze Trüffelcreme, Fior di Latte Mozzarella, frische Pilze, Grana Padano-Späne, Rucola und Trüffelöl.',
       'menu.allergens.title': 'ALLERGENE:', 'menu.allergens.list': 'Gluten, Eier, Milch...',
       'gallery.title': 'Unsere vergangenen Kreationen',
       'gallery.season.summer': 'Sommer 2023', 'gallery.season.spring': 'Frühling 2023', 'gallery.season.winter': 'Winter 2022',
@@ -230,12 +230,30 @@
     }
   };
 
+  function updatePizza(lang) {
+    if (!pizzaData) return;
+    document.getElementById('pizza-name').textContent = pizzaData[lang].nom;
+    document.getElementById('pizza-price').textContent = pizzaData[lang].prix;
+    document.getElementById('pizza-description').textContent = pizzaData[lang].description;
+    document.getElementById('pizza-image').src = pizzaData[lang].image;
+  }
+
   function applyLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (translations[lang][key]) el.textContent = translations[lang][key];
     });
+    updatePizza(lang);
   }
+
+  // Charger les données de pizza.json
+  fetch('pizza.json')
+    .then(response => response.json())
+    .then(data => {
+      pizzaData = data;
+      updatePizza('fr'); // Langue par défaut
+    })
+    .catch(error => console.error('Erreur lors du chargement de pizza.json:', error));
 
   const select = document.getElementById('language-select');
   select.addEventListener('change', (e) => applyLanguage(e.target.value));
