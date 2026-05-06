@@ -1,20 +1,20 @@
 {
   "fr": {
-    "nom": "La natal",
-    "description": "Base crème, mozzarella, champignons frais, jambon de pays, éclats de noix et filet d'huile de truffe.",
-    "prix": "14,50 €",
-    "image": "gallery_création_du chef/natal.jpg"
+    "nom": "La Campagnarde",
+    "description": "Une base crémeuse nappée de mozzarella fondante et de jambon savoureux, pour un voyage gourmand à la campagne.",
+    "prix": "15,50 €",
+    "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "en": {
-    "nom": "The natal",
-    "description": "Cream base, mozzarella, fresh mushrooms, country ham, walnut pieces and truffle oil drizzle.",
-    "prix": "14.50 €",
-    "image": "gallery_création_du chef/natal.jpg"
+    "nom": "The Country",
+    "description": "A creamy base topped with melting mozzarella and flavorful ham, delivering a delightful countryside experience.",
+    "prix": "15.50 €",
+    "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "de": {
-    "nom": "Die natal",
-    "description": "Sahnebasis, Mozzarella, frische Champignons, Land-Schinken, Walnussstücke und Trüffelöl-Tropfen.",
-    "prix": "14,50 €",
-    "image": "gallery_création_du chef/natal.jpg"
+    "nom": "Die Ländliche",
+    "description": "Eine cremige Basis, bedeckt mit schmelzender Mozzarella und würzigem Schinken, für ein köstliches Landerlebnis.",
+    "prix": "15,50 €",
+    "image": "gallery_création_du chef/pizza_moment.jpg"
   }
 }
