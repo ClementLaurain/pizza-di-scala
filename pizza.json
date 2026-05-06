@@ -1,20 +1,20 @@
 {
   "fr": {
-    "nom": "La Campagnarde",
-    "description": "Une base crémeuse nappée de mozzarella fondante et de jambon savoureux, pour un voyage gourmand à la campagne.",
-    "prix": "15,50 €",
+    "nom": "La Dolce Vita",
+    "description": "Une délicieuse pizza aux saveurs italiennes, nappée d'une sauce tomate onctueuse, généreusement garnie de mozzarella fior di latte fondante, de jambon cru de Parme savoureux et de billes de mozzarella fraîche qui explosent en bouche.",
+    "prix": "16,00 €",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "en": {
-    "nom": "The Country",
-    "description": "A creamy base topped with melting mozzarella and flavorful ham, delivering a delightful countryside experience.",
-    "prix": "15.50 €",
+    "nom": "La Dolce Vita",
+    "description": "A mouth‑watering Italian‑style pizza smothered in rich tomato sauce, topped with creamy fior di latte mozzarella, savory Parma dry‑cured ham and fresh mozzarella pearls that burst with flavor.",
+    "prix": "16.00 €",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "de": {
-    "nom": "Die Ländliche",
-    "description": "Eine cremige Basis, bedeckt mit schmelzender Mozzarella und würzigem Schinken, für ein köstliches Landerlebnis.",
-    "prix": "15,50 €",
+    "nom": "La Dolce Vita",
+    "description": "Eine köstliche italienische Pizza, bestrichen mit aromatischer Tomatensauce, belegt mit zart schmelzender Fior‑di‑Latte‑Mozzarella, würzigem Parmaschinken und frischen Mozzarellakugeln, die im Mund zergehen.",
+    "prix": "16,00 €",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   }
 }
