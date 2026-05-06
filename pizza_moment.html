@@ -247,7 +247,7 @@
   }
 
   // Charger les données de pizza.json
-  etch('pizza.json?v=' + new Date().getTime())
+  fetch('pizza.json?v=' + new Date().getTime())
   .then(response => response.json())
   .then(data => {
     pizzaData = data;
