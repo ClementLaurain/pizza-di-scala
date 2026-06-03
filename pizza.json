@@ -1,20 +1,20 @@
 {
   "fr": {
-    "nom": "La natal",
-    "description": "Une base crémeuse nappée de mozzarella fondante et de jambon cru délicatement tranché, pour un goût raffiné et savoureux.",
-    "prix": "15,50 €",
+    "nom": "La Carpa Blanche",
+    "description": "Mosaïques de mozzarella, carpaccio de bœuf Charolais, roquette croquante, copeaux de parmesan, sauce vierge aux dés de tomate, olives, cébette et ail, le tout relevé d'un pesto basilic maison.",
+    "prix": "",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "en": {
-    "nom": "La natal",
-    "description": "A creamy base topped with melty mozzarella and thinly sliced cured ham, delivering a refined and flavorful taste.",
-    "prix": "15.50 €",
+    "nom": "La Carpa Blanche",
+    "description": "Creamy mozzarella, Charolais beef carpaccio, fresh arugula, parmesan shavings, a virgin sauce of diced tomato, olives, chives and garlic, finished with homemade basil pesto.",
+    "prix": "",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "de": {
-    "nom": "La natal",
-    "description": "Eine cremige Basis, belegt mit schmelzender Mozzarella und dünn geschnittenem luftgetrockneten Schinken, für einen raffinierten und aromatischen Genuss.",
-    "prix": "15,50 €",
+    "nom": "La Carpa Blanche",
+    "description": "Cremige Mozzarella, Carpaccio vom Charolais‑Rind, Rucola, Parmesanspäne, Vierge‑Sauce aus Tomatenwürfeln, Oliven, Schnittlauch und Knoblauch, verfeinert mit hausgemachtem Basilik‑Pesto.",
+    "prix": "",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   }
 }
