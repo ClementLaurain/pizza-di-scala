@@ -1,19 +1,19 @@
 {
   "fr": {
     "nom": "La natal",
-    "description": "Une base crémeuse nappée de mozzarella fondante et de jambon cru délicatement tranché, pour un goût riche et authentique.",
+    "description": "Une pâte moelleuse nappée d'une onctueuse crème, généreusement garnie de mozzarella fondante et de jambon cru délicatement salé, pour une explosion de saveurs.",
     "prix": "15,50 €",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "en": {
     "nom": "La natal",
-    "description": "A creamy base topped with melted mozzarella and delicately sliced prosciutto, delivering a rich and authentic flavor.",
+    "description": "A soft crust topped with a velvety cream base, generously layered with melty mozzarella and delicately salty cured ham, delivering an explosion of flavors.",
     "prix": "15.50 €",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "de": {
     "nom": "La natal",
-    "description": "Ein cremiger Grundbelag, bedeckt mit schmelzender Mozzarella und zart geschnittenem rohem Schinken, für einen reichen und authentischen Geschmack.",
+    "description": "Ein weicher Teig, überzogen von einer cremigen Basis, großzügig belegt mit schmelzender Mozzarella und zart gesalzenem rohem Schinken, für ein Geschmackserlebnis der Extraklasse.",
     "prix": "15,50 €",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   }
