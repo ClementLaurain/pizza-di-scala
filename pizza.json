@@ -1,19 +1,19 @@
 {
   "fr": {
-    "nom": "La Carpa Blanche",
-    "description": "Pizza délicieuse à base de mozzarella fondante, carpaccio de bœuf Charolais, roquette croquante, copeaux de parmesan, sauce vierge aux dés de tomate, olives, cébette et ail, le tout relevé d'un pesto basilic maison.",
+    "nom": "Octobre Rose",
+    "description": "Base de tomate crémée, mozzarella fondante, mortadelle savoureuse, radis croquant, burrata onctueuse, éclats de pistache croquants, le tout nappé d'une crème balsamique à la framboise.",
     "prix": "",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "en": {
-    "nom": "White Carp",
-    "description": "A mouth‑watering pizza with creamy mozzarella, thinly sliced Charolais beef carpaccio, peppery arugula, shaved Parmesan, fresh tomato‑olive‑chive‑garlic sauce, and a homemade basil pesto.",
+    "nom": "Octobre Rose",
+    "description": "Creamy tomato base, melty mozzarella, flavorful mortadella, crisp radishes, creamy burrata, crunchy pistachio shards, all drizzled with a raspberry balsamic cream.",
     "prix": "",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "de": {
-    "nom": "Weiße Karpfen",
-    "description": "Eine köstliche Pizza mit zarter Mozzarella, feinem Carpaccio vom Charolais‑Rind, knackigem Rucola, Parmesanspänen, einer Vierge‑Sauce aus Tomatenwürfeln, Oliven, Frühlingszwiebeln und Knoblauch sowie hausgemachtem Basilik‑Pesto.",
+    "nom": "Octobre Rose",
+    "description": "Cremige Tomatenbasis, schmelzende Mozzarella, würzige Mortadella, knackiger Radieschen, cremige Burrata, knusprige Pistache-Stückchen, alles veredelt mit einer Himbeer-Balsamico-Crème.",
     "prix": "",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   }
