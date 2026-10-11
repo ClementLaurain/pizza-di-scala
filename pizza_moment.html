@@ -202,7 +202,8 @@
 
 <script>
   let pizzaData = null;
-
+  const cacheBust = Date.now();
+    
   const translations = {
     fr: {
       'nav.home': 'Home', 'nav.menu': 'Carte Complète',
@@ -235,7 +236,7 @@
     document.getElementById('pizza-name').textContent = pizzaData[lang].nom;
     document.getElementById('pizza-price').textContent = pizzaData[lang].prix;
     document.getElementById('pizza-description').textContent = pizzaData[lang].description;
-    document.getElementById('pizza-image').src = pizzaData[lang].image;
+    document.getElementById('pizza-image').src = pizzaData[lang].image + '?v=' + cacheBust;
   }
 
   function applyLanguage(lang) {
