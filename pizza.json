@@ -1,19 +1,19 @@
 {
   "fr": {
     "nom": "Octobre Rose",
-    "description": "Une pizza raffinée aux notes automnales, avec une base de tomate crémée, mozzarella fondante, mortadelle savoureuse, radis meat croquant, burrata crémeuse, éclats de pistache croquants et une touche de crème balsamique à la framboise.",
+    "description": "Base tomate crémée, Mozzarella, Mortadelle, Radis Meat, Burrata, Éclats de Pistache, Crème Balsamique Framboise",
     "prix": "",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "en": {
     "nom": "Octobre Rose",
-    "description": "A refined autumn-inspired pizza featuring a creamy tomato base, melting mozzarella, flavorful mortadelle, crunchy radish meat, creamy burrata, crunchy pistachio shards and a drizzle of raspberry balsamic cream.",
+    "description": "Creamy tomato base, mozzarella, mortadella, radish meat, burrata, pistachio shards, raspberry balsamic cream",
     "prix": "",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   },
   "de": {
     "nom": "Octobre Rose",
-    "description": "Eine raffinierte herbstliche Pizza mit cremiger Tomatenbasis, schmelzender Mozzarella, würziger Mortadella, knusprigem Radieschen‑Fleisch, cremiger Burrata, knackigen Pistazienstücken und einem Hauch von Himbeer‑Balsamico‑Crem.",
+    "description": "Cremige Tomatenbasis, Mozzarella, Mortadella, Radischfleisch, Burrata, Pistachienstücke, Himbeer-Balsamico-Crème",
     "prix": "",
     "image": "gallery_création_du chef/pizza_moment.jpg"
   }
