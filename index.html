@@ -168,16 +168,7 @@
       color: white;
       border-bottom-color: white;
   }
- .cookie-banner { position:fixed; left:0; right:0; bottom:0; background:#111; color:#fff; padding:16px; z-index:9999; display:flex; justify-content:center; }
- .cookie-inner { max-width:1100px; width:100%; display:flex; justify-content:space-between; align-items:center; gap:12px; }
- .cookie-actions .btn-accept, .cookie-actions .btn-reject, .cookie-actions .btn-manage { margin-left:8px; padding:8px 12px; border-radius:6px; border:0; cursor:pointer; }
- .btn-accept { background:#2c6e49; color:#fff; }
- .btn-reject { background:#f3f3f3; color:#222; }
- .btn-manage { color:#fff; text-decoration:underline; background:transparent; border:none; padding:0; }
- /* modal (very basic) */
- .cookie-modal { position:fixed; inset:0; display:grid; place-items:center; background:rgba(0,0,0,0.5); z-index:10000; }
- .cookie-modal-inner { background:#fff; color:#000; padding:20px; border-radius:8px; max-width:520px; width:95%; }
- .modal-actions { margin-top:12px; display:flex; gap:8px; justify-content:flex-end; }
+ 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
     nav { padding: 0.75rem 2rem; }
@@ -220,20 +211,7 @@
     footer { padding: 1.5rem; flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; }
   }
-  @media (max-width: 600px) {
-    .cookie-inner { flex-direction: column; align-items:stretch; gap:12px; padding: 8px 6px; }
-    .cookie-text p { font-size: 0.95rem; }
-    .cookie-actions { flex-direction: column; width:100%; }
-    .cookie-actions .btn { width:100%; padding:12px 16px; border-radius:10px; }
-    .btn-manage { text-align:center; padding:10px 0; }
-    .cookie-inner { padding-bottom: 12px; }
-    /* make modal inner full height on very small screens if needed */
-    .cookie-modal-inner { max-height: 90vh; overflow:auto; }
-  }
-
-/* prefers-reduced-motion */
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; animation: none !important; }
+  
   }
   @media (max-width: 480px) {
     nav { padding: 0.6rem 1rem; }
@@ -266,6 +244,61 @@
     .footer-logo-icon { width: 24px; height: 24px; font-size: 0.8rem; }
     .footer-logo-text { font-size: 0.9rem; }
   }
+    /* cookie-consent.css - responsive */
+   .pds-cookie-banner {
+     position: fixed;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     z-index: 99999;
+     background: rgba(26,18,9,0.96); /* foncé, adapte si besoin */
+     color: #fff;
+     padding: 14px 12px;
+     box-sizing: border-box;
+     width: 100%;
+     -webkit-font-smoothing:antialiased;
+     /* avoid causing horizontal scroll */
+     overflow: hidden;
+   }
+   
+   /* inner layout */
+   .pds-cookie-inner {
+     max-width: 1100px;
+     margin: 0 auto;
+     display: flex;
+     gap: 12px;
+     align-items: center;
+     justify-content: space-between;
+     width: calc(100% - 24px);
+   }
+   
+   /* text */
+   .pds-cookie-text { flex: 1 1 0; min-width: 0; }
+   .pds-cookie-text p { margin: 6px 0 0; color: rgba(255,255,255,0.9); font-size: 0.95rem; line-height:1.3; word-break: break-word; }
+   
+   /* actions */
+   .pds-cookie-actions { display:flex; gap:8px; flex-shrink:0; align-items:center; }
+   .pds-btn { border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight:600; font-size:0.95rem; }
+   .pds-btn-accept { background: #2c6e49; color:white; }
+   .pds-btn-reject { background: #f3f3f3; color: #222; }
+   .pds-btn-manage { background: transparent; color: #fff; text-decoration: underline; padding: 6px 8px; }
+   
+   /* ensure no horizontal overflow from long text / buttons */
+   .pds-cookie-inner, .pds-cookie-text, .pds-cookie-actions { min-width: 0; }
+   
+   /* mobile: stack vertically, big touch targets */
+   @media (max-width: 640px) {
+     .pds-cookie-inner { flex-direction: column; align-items: stretch; gap: 10px; padding-bottom: env(safe-area-inset-bottom, 12px); }
+     .pds-cookie-text { order: 1; }
+     .pds-cookie-actions { order: 2; gap: 8px; flex-direction: column; width:100%; }
+     .pds-btn { width: 100%; padding: 12px; border-radius: 10px; text-align:center; }
+     .pds-cookie-text p { font-size: 0.95rem; }
+   }
+   
+   /* accessibility / reduced motion */
+   @media (prefers-reduced-motion: reduce) {
+     * { transition: none !important; }
+   }
 </style>
  
 </head>
@@ -497,42 +530,22 @@
     <a href="#" onclick="event.preventDefault(); pdsShowCookiePreferences()">Gérer mes cookies</a>
   </div>
 </footer>
-<!-- Cookie banner & preferences (placer juste avant </body>) -->
-<div id="cookie-banner" aria-live="polite" class="cookie-banner" role="dialog" aria-labelledby="cookie-title" style="display:none">
-  <div class="cookie-inner">
-    <div>
-      <h3 id="cookie-title">Nous utilisons des cookies</h3>
-      <p>Nous utilisons des cookies pour améliorer votre expérience. Vous pouvez accepter ou refuser les traceurs non essentiels.</p>
+<!-- COOKIE BANNER -->
+<div id="pds-cookie-banner" class="pds-cookie-banner" role="dialog" aria-live="polite" aria-label="Bandeau cookies" hidden>
+  <div class="pds-cookie-inner">
+    <div class="pds-cookie-text">
+      <strong>Nous utilisons des cookies</strong>
+      <p>Pour améliorer votre expérience et mesurer l'audience. Vous pouvez accepter ou refuser les traceurs non essentiels.</p>
     </div>
-    <div class="cookie-actions">
-      <button id="cookie-accept" class="btn-accept">Tout accepter</button>
-      <button id="cookie-reject" class="btn-reject">Tout refuser</button>
-      <a href="#" id="cookie-manage" class="btn-manage">Gérer mes cookies</a>
+    <div class="pds-cookie-actions">
+      <button id="pds-accept" class="pds-btn pds-btn-accept">Tout accepter</button>
+      <button id="pds-reject" class="pds-btn pds-btn-reject">Tout refuser</button>
+      <button id="pds-manage" class="pds-btn pds-btn-manage" aria-haspopup="dialog">Gérer mes cookies</button>
     </div>
   </div>
 </div>
 
-<!-- Modal preferences (hidden by default) -->
-<div id="cookie-modal" class="cookie-modal" role="dialog" aria-modal="true" aria-hidden="true" style="display:none">
-  <div class="cookie-modal-inner">
-    <h2>Préférences de cookies</h2>
-    <form id="cookie-form">
-      <div>
-        <label><input type="checkbox" name="necessary" checked disabled> Nécessaires (toujours actives)</label>
-      </div>
-      <div>
-        <label><input type="checkbox" name="analytics"> Analytics</label>
-      </div>
-      <div>
-        <label><input type="checkbox" name="marketing"> Marketing / pixels</label>
-      </div>
-      <div class="modal-actions">
-        <button type="button" id="save-preferences">Enregistrer</button>
-        <button type="button" id="close-preferences">Annuler</button>
-      </div>
-    </form>
-  </div>
-</div>
+
 <script>
   const translations = {
     fr: {
@@ -780,115 +793,96 @@
   });
 </script>
 <script>
+// cookie-consent.js
 (function(){
-  const COOKIE_KEY = 'pds_cookie_consent'; // clé locale
-  const EXP_DAYS = 180; // durée en jours
+  const KEY = 'pds_cookie_consent';
+  const banner = document.getElementById('pds-cookie-banner');
+  if (!banner) return;
 
-  function getConsent(){
-    try {
-      const raw = localStorage.getItem(COOKIE_KEY);
-      return raw ? JSON.parse(raw) : null;
-    } catch(e) { return null; }
+  function readConsent(){
+    try { return JSON.parse(localStorage.getItem(KEY)); } catch(e){ return null; }
   }
-  function setConsent(obj){
-    localStorage.setItem(COOKIE_KEY, JSON.stringify(obj));
-    // set cookie too for servers if needed
-    const expires = new Date(Date.now() + EXP_DAYS*24*60*60*1000).toUTCString();
-    document.cookie = `${COOKIE_KEY}=${encodeURIComponent(JSON.stringify(obj))}; expires=${expires}; path=/; SameSite=Lax`;
+  function saveConsent(obj){
+    localStorage.setItem(KEY, JSON.stringify(obj));
+    // also set a cookie for server-side if needed (optional)
+    const expire = new Date(Date.now() + 180*24*60*60*1000).toUTCString();
+    document.cookie = KEY + '=' + encodeURIComponent(JSON.stringify(obj)) + '; expires=' + expire + '; path=/; SameSite=Lax';
   }
 
-  // Load scripts marked with data-consent or data-cookie-src
+  // reserve space so banner doesn't cover content
+  function reserveSpace(){
+    // only when banner visible
+    if (banner.hidden) { document.body.style.paddingBottom = ''; return; }
+    const h = banner.getBoundingClientRect().height;
+    // safe area inset
+    const safeInset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--pds-safe-inset') || 0, 10) || 0;
+    document.body.style.paddingBottom = (h + safeInset) + 'px';
+  }
+
+  // show/hide helpers
+  function showBanner(){
+    banner.hidden = false;
+    banner.setAttribute('aria-hidden','false');
+    reserveSpace();
+  }
+  function hideBanner(){
+    banner.hidden = true;
+    banner.setAttribute('aria-hidden','true');
+    document.body.style.paddingBottom = '';
+  }
+
+  // load blocked resources if consent given (implement per-site loader)
   function loadBlockedResources(consent){
-    // Load <script type="text/plain" data-consent="analytics" data-src="...">
+    // example: if you marked scripts with type="text/plain" data-consent="analytics"
     document.querySelectorAll('script[type="text/plain"][data-consent]').forEach(tag => {
-      const category = tag.getAttribute('data-consent');
-      if (consent[category]) {
-        const src = tag.getAttribute('data-src');
-        const newScript = document.createElement('script');
-        if (src) {
-          newScript.src = src;
-          newScript.async = tag.hasAttribute('data-async');
-        } else {
-          newScript.text = tag.textContent;
-        }
-        // copy attributes like id if present
-        if (tag.id) newScript.id = tag.id;
-        tag.parentNode.replaceChild(newScript, tag);
-      }
-    });
-
-    // Load <link rel="stylesheet" data-consent="fonts" data-href="...">
-    document.querySelectorAll('link[data-consent]').forEach(link => {
-      const cat = link.getAttribute('data-consent');
+      const cat = tag.getAttribute('data-consent');
       if (!consent[cat]) return;
-      const href = link.getAttribute('data-href');
-      const rel = link.getAttribute('data-rel') || 'stylesheet';
-      const newLink = document.createElement('link');
-      newLink.rel = rel;
-      newLink.href = href;
-      document.head.appendChild(newLink);
+      const src = tag.getAttribute('data-src');
+      const newScript = document.createElement('script');
+      if (src) { newScript.src = src; newScript.async = tag.hasAttribute('data-async'); }
+      else { newScript.text = tag.textContent; }
+      if (tag.id) newScript.id = tag.id;
+      tag.parentNode.replaceChild(newScript, tag);
     });
+    // same pattern for link[data-consent] if you used that approach
   }
 
-  // On initial load, apply consent if present
-  const saved = getConsent();
+  // initial behaviour
+  const saved = readConsent();
   if (saved) {
-    // hide banner if present
-    document.getElementById('cookie-banner')?.style && (document.getElementById('cookie-banner').style.display='none');
-    // load allowed resources
+    hideBanner();
     loadBlockedResources(saved);
   } else {
-    // show banner
-    const banner = document.getElementById('cookie-banner');
-    if (banner) banner.style.display = 'block';
+    showBanner();
   }
 
-  // UI handlers
-  document.getElementById('cookie-accept')?.addEventListener('click', () => {
-    const full = { necessary: true, analytics: true, marketing: true, timestamp: Date.now() };
-    setConsent(full);
-    document.getElementById('cookie-banner').style.display='none';
-    loadBlockedResources(full);
-  });
-  document.getElementById('cookie-reject')?.addEventListener('click', () => {
-    const none = { necessary: true, analytics: false, marketing: false, timestamp: Date.now() };
-    setConsent(none);
-    document.getElementById('cookie-banner').style.display='none';
-    // do NOT load blocked resources
-  });
-  document.getElementById('cookie-manage')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    // open modal
-    const modal = document.getElementById('cookie-modal');
-    if (!modal) return;
-    // populate from saved or defaults
-    const c = saved || { necessary:true, analytics:false, marketing:false };
-    modal.style.display = 'block';
-    modal.setAttribute('aria-hidden','false');
-    modal.querySelector('input[name="analytics"]').checked = !!c.analytics;
-    modal.querySelector('input[name="marketing"]').checked = !!c.marketing;
-  });
+  // adjust reserved space on resize/rotation or when fonts/images load
+  const ro = new ResizeObserver(reserveSpace);
+  ro.observe(banner);
+  window.addEventListener('orientationchange', reserveSpace);
+  window.addEventListener('resize', reserveSpace);
 
-  document.getElementById('close-preferences')?.addEventListener('click', () => {
-    const modal = document.getElementById('cookie-modal');
-    if (modal) { modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
-  });
-  document.getElementById('save-preferences')?.addEventListener('click', () => {
-    const modal = document.getElementById('cookie-modal');
-    if (!modal) return;
-    const analytics = !!modal.querySelector('input[name="analytics"]').checked;
-    const marketing = !!modal.querySelector('input[name="marketing"]').checked;
-    const obj = { necessary:true, analytics, marketing, timestamp: Date.now() };
-    setConsent(obj);
-    modal.style.display='none';
-    document.getElementById('cookie-banner').style.display='none';
+  // UI buttons
+  document.getElementById('pds-accept').addEventListener('click', function(){
+    const obj = { necessary:true, analytics:true, marketing:true, ts:Date.now() };
+    saveConsent(obj);
+    hideBanner();
     loadBlockedResources(obj);
   });
+  document.getElementById('pds-reject').addEventListener('click', function(){
+    const obj = { necessary:true, analytics:false, marketing:false, ts:Date.now() };
+    saveConsent(obj);
+    hideBanner();
+  });
+  document.getElementById('pds-manage').addEventListener('click', function(){
+    // open preference UI or scroll to cookie page; simple default: navigate to cookies.html if exists
+    const prefsUrl = '/cookies.html';
+    if (document.location.pathname !== prefsUrl) document.location = prefsUrl;
+  });
 
-  // expose a global to allow "Gérer mes cookies" link in footer to open modal
-  window.pdsShowCookiePreferences = function(){
-    document.getElementById('cookie-manage')?.click();
-  };
+  // expose global opener in case you want a footer link that re-opens banner
+  window.pdsOpenCookieBanner = function(){ showBanner(); reserveSpace(); };
+
 })();
 </script>
 
