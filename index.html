@@ -36,7 +36,7 @@
 
   /* HERO — hauteur fixe, pas 100vh */
   .hero { margin-top: 68px; display: grid; grid-template-columns: 1fr 1.05fr; min-height: 480px; gap: 2rem; }
-  .hero-left { padding: 0rem 2rem 3rem 2rem; max-width: 620px; display: flex; flex-direction: column; justify-content: center; gap: 1.25rem; }
+  .hero-left { padding: 0rem 3rem 30rem 5rem; max-width: 620px; display: flex; flex-direction: column; justify-content: center; gap: 1.25rem; }
   .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rouge); display: flex; align-items: center; gap: 0.6rem; }
   .hero-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--rouge); }
   .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.02; color: var(--brun); }
@@ -168,7 +168,6 @@
       color: white;
       border-bottom-color: white;
   }
- 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
     nav { padding: 0.75rem 2rem; }
@@ -211,8 +210,7 @@
     footer { padding: 1.5rem; flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; }
   }
-  
-  }
+
   @media (max-width: 480px) {
     nav { padding: 0.6rem 1rem; }
     .nav-logo-text { font-size: 1rem; }
@@ -244,61 +242,6 @@
     .footer-logo-icon { width: 24px; height: 24px; font-size: 0.8rem; }
     .footer-logo-text { font-size: 0.9rem; }
   }
-    /* cookie-consent.css - responsive */
-   .pds-cookie-banner {
-     position: fixed;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     z-index: 99999;
-     background: rgba(26,18,9,0.96); /* foncé, adapte si besoin */
-     color: #fff;
-     padding: 14px 12px;
-     box-sizing: border-box;
-     width: 100%;
-     -webkit-font-smoothing:antialiased;
-     /* avoid causing horizontal scroll */
-     overflow: hidden;
-   }
-   
-   /* inner layout */
-   .pds-cookie-inner {
-     max-width: 1100px;
-     margin: 0 auto;
-     display: flex;
-     gap: 12px;
-     align-items: center;
-     justify-content: space-between;
-     width: calc(100% - 24px);
-   }
-   
-   /* text */
-   .pds-cookie-text { flex: 1 1 0; min-width: 0; }
-   .pds-cookie-text p { margin: 6px 0 0; color: rgba(255,255,255,0.9); font-size: 0.95rem; line-height:1.3; word-break: break-word; }
-   
-   /* actions */
-   .pds-cookie-actions { display:flex; gap:8px; flex-shrink:0; align-items:center; }
-   .pds-btn { border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight:600; font-size:0.95rem; }
-   .pds-btn-accept { background: #2c6e49; color:white; }
-   .pds-btn-reject { background: #f3f3f3; color: #222; }
-   .pds-btn-manage { background: transparent; color: #fff; text-decoration: underline; padding: 6px 8px; }
-   
-   /* ensure no horizontal overflow from long text / buttons */
-   .pds-cookie-inner, .pds-cookie-text, .pds-cookie-actions { min-width: 0; }
-   
-   /* mobile: stack vertically, big touch targets */
-   @media (max-width: 640px) {
-     .pds-cookie-inner { flex-direction: column; align-items: stretch; gap: 10px; padding-bottom: env(safe-area-inset-bottom, 12px); }
-     .pds-cookie-text { order: 1; }
-     .pds-cookie-actions { order: 2; gap: 8px; flex-direction: column; width:100%; }
-     .pds-btn { width: 100%; padding: 12px; border-radius: 10px; text-align:center; }
-     .pds-cookie-text p { font-size: 0.95rem; }
-   }
-   
-   /* accessibility / reduced motion */
-   @media (prefers-reduced-motion: reduce) {
-     * { transition: none !important; }
-   }
 </style>
  
 </head>
@@ -525,26 +468,8 @@
     <a href="https://www.facebook.com/Pizza-Di-Scala-103797105085505/">Facebook</a>
     <a href="https://www.instagram.com/pizzadiscala">Instagram</a>
     <a href="mailto:nicoscala80@gmail.com">Email</a>
-    <a href="mentions.html">Mentions légales</a>
-    <a href="politique-confidentialite.html">Politique de confidentialité</a>
-    <a href="#" onclick="event.preventDefault(); pdsShowCookiePreferences()">Gérer mes cookies</a>
   </div>
 </footer>
-<!-- COOKIE BANNER -->
-<div id="pds-cookie-banner" class="pds-cookie-banner" role="dialog" aria-live="polite" aria-label="Bandeau cookies" hidden>
-  <div class="pds-cookie-inner">
-    <div class="pds-cookie-text">
-      <strong>Nous utilisons des cookies</strong>
-      <p>Pour améliorer votre expérience et mesurer l'audience. Vous pouvez accepter ou refuser les traceurs non essentiels.</p>
-    </div>
-    <div class="pds-cookie-actions">
-      <button id="pds-accept" class="pds-btn pds-btn-accept">Tout accepter</button>
-      <button id="pds-reject" class="pds-btn pds-btn-reject">Tout refuser</button>
-      <button id="pds-manage" class="pds-btn pds-btn-manage" aria-haspopup="dialog">Gérer mes cookies</button>
-    </div>
-  </div>
-</div>
-
 
 <script>
   const translations = {
@@ -791,99 +716,6 @@
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
   });
-</script>
-<script>
-// cookie-consent.js
-(function(){
-  const KEY = 'pds_cookie_consent';
-  const banner = document.getElementById('pds-cookie-banner');
-  if (!banner) return;
-
-  function readConsent(){
-    try { return JSON.parse(localStorage.getItem(KEY)); } catch(e){ return null; }
-  }
-  function saveConsent(obj){
-    localStorage.setItem(KEY, JSON.stringify(obj));
-    // also set a cookie for server-side if needed (optional)
-    const expire = new Date(Date.now() + 180*24*60*60*1000).toUTCString();
-    document.cookie = KEY + '=' + encodeURIComponent(JSON.stringify(obj)) + '; expires=' + expire + '; path=/; SameSite=Lax';
-  }
-
-  // reserve space so banner doesn't cover content
-  function reserveSpace(){
-    // only when banner visible
-    if (banner.hidden) { document.body.style.paddingBottom = ''; return; }
-    const h = banner.getBoundingClientRect().height;
-    // safe area inset
-    const safeInset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--pds-safe-inset') || 0, 10) || 0;
-    document.body.style.paddingBottom = (h + safeInset) + 'px';
-  }
-
-  // show/hide helpers
-  function showBanner(){
-    banner.hidden = false;
-    banner.setAttribute('aria-hidden','false');
-    reserveSpace();
-  }
-  function hideBanner(){
-    banner.hidden = true;
-    banner.setAttribute('aria-hidden','true');
-    document.body.style.paddingBottom = '';
-  }
-
-  // load blocked resources if consent given (implement per-site loader)
-  function loadBlockedResources(consent){
-    // example: if you marked scripts with type="text/plain" data-consent="analytics"
-    document.querySelectorAll('script[type="text/plain"][data-consent]').forEach(tag => {
-      const cat = tag.getAttribute('data-consent');
-      if (!consent[cat]) return;
-      const src = tag.getAttribute('data-src');
-      const newScript = document.createElement('script');
-      if (src) { newScript.src = src; newScript.async = tag.hasAttribute('data-async'); }
-      else { newScript.text = tag.textContent; }
-      if (tag.id) newScript.id = tag.id;
-      tag.parentNode.replaceChild(newScript, tag);
-    });
-    // same pattern for link[data-consent] if you used that approach
-  }
-
-  // initial behaviour
-  const saved = readConsent();
-  if (saved) {
-    hideBanner();
-    loadBlockedResources(saved);
-  } else {
-    showBanner();
-  }
-
-  // adjust reserved space on resize/rotation or when fonts/images load
-  const ro = new ResizeObserver(reserveSpace);
-  ro.observe(banner);
-  window.addEventListener('orientationchange', reserveSpace);
-  window.addEventListener('resize', reserveSpace);
-
-  // UI buttons
-  document.getElementById('pds-accept').addEventListener('click', function(){
-    const obj = { necessary:true, analytics:true, marketing:true, ts:Date.now() };
-    saveConsent(obj);
-    hideBanner();
-    loadBlockedResources(obj);
-  });
-  document.getElementById('pds-reject').addEventListener('click', function(){
-    const obj = { necessary:true, analytics:false, marketing:false, ts:Date.now() };
-    saveConsent(obj);
-    hideBanner();
-  });
-  document.getElementById('pds-manage').addEventListener('click', function(){
-    // open preference UI or scroll to cookie page; simple default: navigate to cookies.html if exists
-    const prefsUrl = '/cookies.html';
-    if (document.location.pathname !== prefsUrl) document.location = prefsUrl;
-  });
-
-  // expose global opener in case you want a footer link that re-opens banner
-  window.pdsOpenCookieBanner = function(){ showBanner(); reserveSpace(); };
-
-})();
 </script>
 
 </body>
