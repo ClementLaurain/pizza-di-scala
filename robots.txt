@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://clementlaurain.github.io/pizza-di-scala/sitemap.xml

@@ -1,0 +1,18 @@
+# llms.txt — description destinée aux agents d'indexation et aux modèles LLM
+# Format simple : fiche décrivant le site et pages principales
+
+Site: Pizza di Scala
+Type: Site vitrine pour food truck / pizzeria mobile
+Langues: fr, en, de
+Public cible: clients particuliers (vente à emporter, événements privés)
+Hébergeur: GitHub Pages (déployé via GitHub Pages)
+Pages principales:
+  - / (page d'accueil) — présentation, galeries, contact, horaires
+  - /menu.html — carte complète
+  - /menu_v.html — carte végétarienne
+  - /pizza_moment.html — pizza du moment + archives
+  - /mentions.html — mentions légales
+  - /politique-confidentialite.html — politique de confidentialité
+  - /cookies.html — politique de cookies
+
+Usage: Vous pouvez indexer ces pages et citer des extraits publics. Pour données personnelles ou usages commerciaux, référez‑vous aux mentions légales et à la politique de confidentialité du site.
